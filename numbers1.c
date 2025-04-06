@@ -70,12 +70,16 @@ int main(int argc, char *argv[]) {
         MPI_STATUS_IGNORE // status_p
     );
 
-    // Todo:
-    // Left check if in order, right not needed
-    // If check failed
-    //      Print out-of-order warning
-    // Master Process
-    // Slave Process
+    /*
+     * For all processes except process 0, check if the number is out of order.
+     * A process is out of order if its number is less than the number it received
+     * from its left neighbour.
+     */
+    if (rank != 0) { // All but rank 0 check number to their left, because 0 has no left neighbor
+        if (number < left_number) { // Left check if in order, right not needed
+            printf("Process %d has at least one number out of order.\n", rank); // If check failed
+        }
+    }
 
     // Indicate that the process has finished executing.
     printf("Process %d has now finished.\n", rank);
