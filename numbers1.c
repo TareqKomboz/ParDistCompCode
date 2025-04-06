@@ -7,6 +7,9 @@ Description:    This is Assignement 1 Milestone Program. The objective is to fin
 // How neighbour relationships between tasks are implemented
 
 // Import libraries
+#include <mpi.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 // Master Process
 // Slave Process
@@ -17,3 +20,7 @@ Description:    This is Assignement 1 Milestone Program. The objective is to fin
 // If one check failed
 //      Print out-of-order warning
 // Print Terminiation Indication
+int main(int argc, char *argv[]) {
+    printf("Hello World");
+    return 0;
+}
