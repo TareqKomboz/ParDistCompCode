@@ -45,15 +45,20 @@ int main(int argc, char *argv[]) {
             break;
     }
 
+    // Determine the neighbours in the ring:
+    // Left neighbour: (rank - 1 + size) % size (wrap-around using modulo)
+    // Right neighbour: (rank + 1) % size (wrap-around)
+    int left = (rank - 1 + size) % size; // Calculation of left neigbor rank
+    int right = (rank + 1) % size; // Calculation of right neigbor rank
+
     // Todo:
+    // Send number to right rank
+    // Receive number from left rank 
+    // Left check if in order, right not needed
+    // If check failed
+    //      Print out-of-order warning
     // Master Process
     // Slave Process
-    // Calculation of left neigbor rank
-    // Calculation of right neigbor rank
-    // Left check if in order
-    // Right check if in order
-    // If one check failed
-    //      Print out-of-order warning
 
     // Indicate that the process has finished executing.
     printf("Process %d has now finished.\n", rank);
