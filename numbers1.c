@@ -22,6 +22,29 @@ int main(int argc, char *argv[]) {
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
+    // Assign a number to each process based on its rank.
+    // Example assignment: Process 0: 5, Process 1: 7, Process 2: 9, Process 3: 1, Process 4: 13
+    switch (rank) {
+        case 0: 
+            number = 5; 
+            break;
+        case 1: 
+            number = 7; 
+            break;
+        case 2: 
+            number = 9; 
+            break;
+        case 3: 
+            number = 1; 
+            break;
+        case 4: 
+            number = 13; 
+            break;
+        default: 
+            number = 0; 
+            break;
+    }
+
     // Todo:
     // Master Process
     // Slave Process
