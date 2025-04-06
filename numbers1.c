@@ -51,9 +51,26 @@ int main(int argc, char *argv[]) {
     int left = (rank - 1 + size) % size; // Calculation of left neigbor rank
     int right = (rank + 1) % size; // Calculation of right neigbor rank
 
+    /* 
+     * Each process sends its own number to its right neighbour and simultaneously receives a number from its left neighbour using MPI_Sendrecv.
+     * This ensures that processes communicate only with their immediate neighbours.
+     */
+    MPI_Sendrecv(
+        &number, // msg_buf_p
+        1, // msg_size
+        MPI_INT, // msg_type
+        right, // dest
+        0, // tag
+        &left_number, // msg_buf_p
+        1,  // buf_size
+        MPI_INT,  // buf_type
+        left,  // source
+        0, // tag
+        MPI_COMM_WORLD, // communicator
+        MPI_STATUS_IGNORE // status_p
+    );
+
     // Todo:
-    // Send number to right rank
-    // Receive number from left rank 
     // Left check if in order, right not needed
     // If check failed
     //      Print out-of-order warning
