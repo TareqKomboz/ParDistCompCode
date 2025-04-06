@@ -1,16 +1,15 @@
 /*
-Name:           Tareq Abu El Komboz
-StudentID:      A1976365
-Description:    This is Assignement 1 Milestone Program. The objective is to find numbers out of order in a ring topology, and print information about them.
+* Name:           Tareq Abu El Komboz
+* StudentID:      A1976365
+* Description:    This is Assignement 1 Milestone Program. The objective is to find numbers out of order in a ring topology, and print information about them.
 */
-
-// How neighbour relationships between tasks are implemented
 
 // Import libraries
 #include <mpi.h>
 #include <stdio.h>
 #include <stdlib.h>
 
+// main executing code
 int main(int argc, char *argv[]) {
     // Initialize variables for each process
     int rank, size;     // Rank of the process and total number of processes
@@ -45,9 +44,11 @@ int main(int argc, char *argv[]) {
             break;
     }
 
-    // Determine the neighbours in the ring:
-    // Left neighbour: (rank - 1 + size) % size (wrap-around using modulo)
-    // Right neighbour: (rank + 1) % size (wrap-around)
+    /*
+     * Determine neighbour relationships between tasks in the ring
+     * Left neighbour: (rank - 1 + size) % size (wrap-around using modulo)
+     * Right neighbour: (rank + 1) % size (wrap-around)
+     */
     int left = (rank - 1 + size) % size; // Calculation of left neigbor rank
     int right = (rank + 1) % size; // Calculation of right neigbor rank
 
